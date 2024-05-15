@@ -4,6 +4,8 @@ import { AppService } from './app.service';
 import { UsersController } from './feature/users/users.controller';
 import { UsersService } from './feature/users/users.service';
 import { UsersRepository } from './feature/users/users.repository';
+import { MongooseModule } from '@nestjs/mongoose';
+import { User, UserSchema } from './feature/users/domain';
 
 /*декоратора @Module()---ЭТО КАК В ЭКСПРЕС КОМПОЗИШЕН-РУУТ..
 в NestJS используются для организации
@@ -20,7 +22,19 @@ import { UsersRepository } from './feature/users/users.repository';
       за создание экземпляров сервисов и предоставление
       их внедрению зависимостей.   */
 @Module({
-  imports: [],
+  imports: [
+    MongooseModule.forRoot(
+      'mongodb+srv://pavvelpotapov:PV2PsPiYpmxxdhn9@cluster0.8s1u6fi.mongodb.net/projectNest',
+    ),
+    /*    --User.name  у класса(не у экземпляра класса) берут имя
+    оно будет 'user'*/
+    MongooseModule.forFeature([
+      {
+        name: User.name,
+        schema: UserSchema,
+      },
+    ]),
+  ],
   /*все контроллеры приложения должны тут добавлены */
   controllers: [AppController, UsersController],
   /* все сервисы приложения должны тут добавлены */

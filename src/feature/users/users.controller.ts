@@ -60,12 +60,27 @@ export class UsersController {
     ].filter((el) => el.name.indexOf(query.term) > -1);
   }
 
+  /*  @Post()
+    /!* из тела запроса -ИЗ БОДИ ВОЗМУ ПРИХОДЯЩИЕ ДАННЫЕ
+    @Body() inputModel---создать inputModel надо
+    в постмане когда запрос отправляю*!/
+    createUser(@Body() inputModel: CreateUserInputModelType) {
+      return { id: 7, name: inputModel.name, age: inputModel.age };
+    }*/
+
   @Post()
   /* из тела запроса -ИЗ БОДИ ВОЗМУ ПРИХОДЯЩИЕ ДАННЫЕ
   @Body() inputModel---создать inputModel надо
   в постмане когда запрос отправляю*/
-  createUser(@Body() inputModel: CreateUserInputModelType) {
-    return { id: 7, name: inputModel.name, age: inputModel.age };
+  async createUser(@Body() inputModel: CreateUserInputModelType) {
+    const dto = {
+      id: inputModel.id,
+      name: inputModel.name,
+      age: inputModel.age,
+    };
+
+    const res = await this.usersService.createUser(dto);
+    return res;
   }
 
   /*  @Get(':id')--тут id это uriПАРaМЕТР он в урле и из
@@ -126,7 +141,7 @@ export class UsersController {
   }
 }
 
-type CreateUserInputModelType = {
+export type CreateUserInputModelType = {
   id: number;
   name: string;
   age: number;
