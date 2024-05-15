@@ -1,6 +1,9 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { UsersController } from './feature/users/users.controller';
+import { UsersService } from './feature/users/users.service';
+import { UsersRepository } from './feature/users/users.repository';
 
 /*декоратора @Module()---ЭТО КАК В ЭКСПРЕС КОМПОЗИШЕН-РУУТ..
 в NestJS используются для организации
@@ -19,9 +22,9 @@ import { AppService } from './app.service';
 @Module({
   imports: [],
   /*все контроллеры приложения должны тут добавлены */
-  controllers: [AppController],
+  controllers: [AppController, UsersController],
   /* все сервисы приложения должны тут добавлены */
-  providers: [AppService],
+  providers: [AppService, UsersService, UsersRepository],
 })
 /*export class AppModule {} в данном контексте
 представляет сам модуль. То что собрано -сконфигурировано
