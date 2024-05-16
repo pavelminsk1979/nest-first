@@ -8,8 +8,8 @@ import { AppModule } from './app.module';
 https://docs.nestjs.com/*/
 async function bootstrap() {
   /*  класс создает приложение на основе МОДУЛЯ
-   NestFactory.create(AppModule) - Эта строка кода создает экземпляр
-    приложения NestJS на основе модуля AppModule. AppModule - это корневой
+   NestFactory.create(AppModule) - Внизу строка кода создает экземпляр
+    приложения NestJS на основе модуля AppModule(он в аргументе). AppModule - это корневой
      модуль вашего приложения (ОН СОЗДАЁТСЯ В ФАЙЛЕ app.module)
      который определяет все импорты, контроллеры
       и провайдеры, необходимые для функционирования вашего приложения.

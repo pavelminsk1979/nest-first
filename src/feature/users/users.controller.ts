@@ -11,8 +11,8 @@ import {
 import { UsersService } from './users.service';
 
 @Controller('users')
-/* @Controller()является декоратором,
- который применяется к классу . Он указывает,
+/* @Controller()-- декоратор,
+ который применяется к классу , указывает,
  что этот класс является контроллером. Контроллеры в NestJS отвечают за
   обработку HTTP-запросов и определение маршрутов
   В аргументе   ('users')   это URL на который
@@ -60,7 +60,8 @@ export class UsersController {
     ].filter((el) => el.name.indexOf(query.term) > -1);
   }
 
-  /*  @Post()
+  /*
+  @Post()
     /!* из тела запроса -ИЗ БОДИ ВОЗМУ ПРИХОДЯЩИЕ ДАННЫЕ
     @Body() inputModel---создать inputModel надо
     в постмане когда запрос отправляю*!/
@@ -70,8 +71,9 @@ export class UsersController {
 
   @Post()
   /* из тела запроса -ИЗ БОДИ ВОЗМУ ПРИХОДЯЩИЕ ДАННЫЕ
-  @Body() inputModel---создать inputModel надо
-  в постмане когда запрос отправляю*/
+  @Body() inputModel---имя тут  inputModel а
+  в постмане когда запрос отправляю это обьект с
+  данными*/
   async createUser(@Body() inputModel: CreateUserInputModelType) {
     const dto = {
       id: inputModel.id,

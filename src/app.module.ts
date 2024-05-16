@@ -23,11 +23,12 @@ import { User, UserSchema } from './feature/users/domain';
       их внедрению зависимостей.   */
 @Module({
   imports: [
+    /*  тут подключение к удаленной базе данных ...url aдрес
+      этой базы а в конце название конкретного отдела(projectNest)*/
     MongooseModule.forRoot(
       'mongodb+srv://pavvelpotapov:PV2PsPiYpmxxdhn9@cluster0.8s1u6fi.mongodb.net/projectNest',
     ),
-    /*    --User.name  у класса(не у экземпляра класса) берут имя
-    оно будет 'user'*/
+    /*    --User.name  у класса(не у экземпляра класса) берут имя оно будет 'user'*/
     MongooseModule.forFeature([
       {
         name: User.name,
